@@ -17,10 +17,12 @@ const game = (description, questionAndAnswer) => {
     if (correctAnswer === answerUser) {
       console.log('\nCorrect!');
     } else {
-      return console.log(`\n'${answerUser}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${name}!`);
+      console.log(`\n'${answerUser}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${name}!`);
+      return;
     }
   }
-  return console.log(`Congratulations, ${name}!`);
+  console.log(`Congratulation, ${name}!`);
 };
 
 export default game;
