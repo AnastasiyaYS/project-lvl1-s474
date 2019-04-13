@@ -1,17 +1,22 @@
 import { cons } from 'hexlet-pairs';
-import getRandomNumber from './modules/randomNumber';
+import getRandomNumber from '../utils/randomNumber';
+import game from '..';
 
-export const description = 'Find the greatest common divisor of given numbers.';
+const description = 'Find the greatest common divisor of given numbers.';
 
-const greatestCommonDivisor = (a, b) => {
+const getGreatestCommonDivisor = (a, b) => {
   if (b === 0) return a;
-  return greatestCommonDivisor(b, a % b);
+  return getGreatestCommonDivisor(b, a % b);
 };
 
-export const questionAndAnswer = () => {
+const questionAndAnswer = () => {
   const number1 = getRandomNumber(1, 50);
   const number2 = getRandomNumber(1, 50);
   const question = `${number1} ${number2}`;
-  const correctAnswer = String(greatestCommonDivisor(number1, number2));
+  const correctAnswer = String(getGreatestCommonDivisor(number1, number2));
   return cons(question, correctAnswer);
+};
+
+export default () => {
+  game(description, questionAndAnswer);
 };

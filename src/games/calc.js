@@ -1,31 +1,42 @@
 import { cons, car, cdr } from 'hexlet-pairs';
-import getRandomNumber from './modules/randomNumber';
+import getRandomNumber from '../utils/randomNumber';
+import game from '..';
 
-export const description = 'What is the result of the expression?';
+const description = 'What is the result of the expression?';
 
-const add = (a, b) => a + b;
-const diff = (a, b) => a - b;
-const mult = (a, b) => a * b;
+const calculateAdd = (a, b) => a + b;
+const calculateDiff = (a, b) => a - b;
+const calculateMult = (a, b) => a * b;
 
-export const questionAndAnswer = () => {
+const collectionOperations = new Map();
+collectionOperations.set(calculateAdd, calculateDiff, calculateMult);
+const countOperations = collectionOperations.size;
+
+const questionAndAnswer = () => {
   const operand1 = getRandomNumber(0, 10);
   const operand2 = getRandomNumber(0, 10);
-  const countOperations = 3;
-  const numberForOperatoin = getRandomNumber(0, countOperations);
+  const numberOfOperation = getRandomNumber(0, countOperations);
   let operation;
-  switch (numberForOperatoin) {
+  switch (numberOfOperation) {
     case 0:
-      operation = cons('+', add);
+      operation = cons('+', calculateAdd);
       break;
     case 1:
-      operation = cons('-', diff);
+      operation = cons('-', calculateDiff);
+      break;
+    case 2:
+      operation = cons('*', calculateMult);
       break;
     default:
-      operation = cons('*', mult);
+      return cons('Error, press 0 to continue...', '0');
   }
-  const operationSign = car(operation);
+  const operator = car(operation);
   const operationFunction = cdr(operation);
-  const question = `${operand1} ${operationSign} ${operand2}`;
+  const question = `${operand1} ${operator} ${operand2}`;
   const correctAnswer = String(operationFunction(operand1, operand2));
   return cons(question, correctAnswer);
+};
+
+export default () => {
+  game(description, questionAndAnswer);
 };
