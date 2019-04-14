@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import getRandomNumber from '../utils/randomNumber';
-import game from '..';
+import play from '..';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -16,12 +16,12 @@ const isPrime = (num) => {
   return true;
 };
 
-const questionAndAnswer = () => {
+const getQuestionAndAnswer = () => {
   const question = getRandomNumber(2, 100);
   const correctAnswer = isPrime(question) ? 'yes' : 'no';
   return cons(question, correctAnswer);
 };
 
 export default () => {
-  game(description, questionAndAnswer);
+  play(description, getQuestionAndAnswer);
 };

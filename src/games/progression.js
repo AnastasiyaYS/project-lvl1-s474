@@ -1,33 +1,28 @@
 import { cons } from 'hexlet-pairs';
 import getRandomNumber from '../utils/randomNumber';
-import game from '..';
+import play from '..';
 
 const description = 'What number is missing in the progression?';
 
-const questionAndAnswer = () => {
-  const rowBegin = getRandomNumber(0, 20);
-  const stepProgression = getRandomNumber(1, 5);
-  const rowLength = 10;
-  const missPosition = getRandomNumber(0, rowLength);
-  let question = '';
-  let correctAnswer;
-
-  let currentNumber = rowBegin;
-  for (let i = 0; i < rowLength; i += 1) {
-    if (i === missPosition) {
-      question += '.. ';
-      correctAnswer = currentNumber;
-      currentNumber += stepProgression;
-    } else {
-      question += `${currentNumber} `;
-      currentNumber += stepProgression;
-    }
+const getRow = (begin, step, missingPosition, length, row) => {
+  if (length === 0) return row;
+  if (length - 1 === missingPosition) {
+    return getRow(begin, step, missingPosition, length - 1, `.. ${row}`);
   }
+  return getRow(begin, step, missingPosition, length - 1, `${begin + (length - 1) * step} ${row}`);
+};
 
-  correctAnswer = String(correctAnswer);
+const getQuestionAndAnswer = () => {
+  const begin = getRandomNumber(0, 20);
+  const step = getRandomNumber(1, 5);
+  const length = 10;
+  const missingPosition = getRandomNumber(0, length);
+
+  const question = getRow(begin, step, missingPosition, length, '');
+  const correctAnswer = String(begin + step * missingPosition);
   return cons(question, correctAnswer);
 };
 
 export default () => {
-  game(description, questionAndAnswer);
+  play(description, getQuestionAndAnswer);
 };

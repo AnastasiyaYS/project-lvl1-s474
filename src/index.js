@@ -3,7 +3,7 @@ import { car, cdr } from 'hexlet-pairs';
 
 const countOfRounds = 3;
 
-const game = (description, questionAndAnswer) => {
+const play = (description, getQuestionAndAnswer) => {
   console.log('\nWelcome to the Brain Games!');
   console.log(description);
 
@@ -11,9 +11,9 @@ const game = (description, questionAndAnswer) => {
   console.log(`Hello, ${name}!`);
 
   for (let i = 0; i < countOfRounds; i += 1) {
-    const pair = questionAndAnswer();
-    const question = car(pair);
-    const correctAnswer = cdr(pair);
+    const questionAndAnswer = getQuestionAndAnswer();
+    const question = car(questionAndAnswer);
+    const correctAnswer = cdr(questionAndAnswer);
     const answerUser = readlineSync.question(`\nQuestion: ${question}\n`);
     if (correctAnswer === answerUser) {
       console.log('\nCorrect!');
@@ -26,4 +26,4 @@ const game = (description, questionAndAnswer) => {
   console.log(`Congratulation, ${name}!`);
 };
 
-export default game;
+export default play;

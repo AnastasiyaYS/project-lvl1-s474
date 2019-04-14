@@ -1,6 +1,6 @@
 import { cons, car, cdr } from 'hexlet-pairs';
 import getRandomNumber from '../utils/randomNumber';
-import game from '..';
+import play from '..';
 
 const description = 'What is the result of the expression?';
 
@@ -12,7 +12,7 @@ const collectionOperations = new Map();
 collectionOperations.set(calculateAdd, calculateDiff, calculateMult);
 const countOperations = collectionOperations.size;
 
-const questionAndAnswer = () => {
+const getQuestionAndAnswer = () => {
   const operand1 = getRandomNumber(0, 10);
   const operand2 = getRandomNumber(0, 10);
   const numberOfOperation = getRandomNumber(0, countOperations);
@@ -38,5 +38,5 @@ const questionAndAnswer = () => {
 };
 
 export default () => {
-  game(description, questionAndAnswer);
+  play(description, getQuestionAndAnswer);
 };
