@@ -16,31 +16,31 @@ $ sudo npm install -g @anastassin/brain-games
 
 ## Run
 
-* **Brain even**
+### **Brain even**
 ```sh
 $ brain-even
 ```
 [![asciicast](https://asciinema.org/a/240370.svg)](https://asciinema.org/a/240370)
 
-* **Brain calc**
+### **Brain calc**
 ```sh
 $ brain-calc
 ```
 [![asciicast](https://asciinema.org/a/240506.svg)](https://asciinema.org/a/240506)
 
-* **Brain gcd**
+### **Brain gcd**
 ```sh
 $ brain-gcd
 ```
 [![asciicast](https://asciinema.org/a/240579.svg)](https://asciinema.org/a/240579)
 
-* **Brain progression**
+### **Brain progression**
 ```sh
 $ brain-progression
 ```
 [![asciicast](https://asciinema.org/a/240698.svg)](https://asciinema.org/a/240698)
 
-* **Brain prime**
+### **Brain prime**
 ```sh
 $ brain-prime
 ```
