@@ -27,8 +27,6 @@ const getQuestionAndAnswer = () => {
     case 2:
       operation = cons('*', calculateMult);
       break;
-    default:
-      return cons('Error, press 0 to continue...', '0');
   }
   const operator = car(operation);
   const operationFunction = cdr(operation);
