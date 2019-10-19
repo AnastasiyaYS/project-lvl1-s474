@@ -27,6 +27,8 @@ const getQuestionAndAnswer = () => {
     case 2:
       operation = cons('*', calculateMult);
       break;
+    default:
+      throw new Error(`Unexpected operation index ${numberOfOperation}, count of operations: ${countOperations}`);
   }
   const operator = car(operation);
   const operationFunction = cdr(operation);
